@@ -3,4 +3,5 @@
     <string name="play">Play</string>
     <string name="rewind">Rewind</string>
     <string name="forward">Forward</string>
+    <string name="songs">List of Songs</string>
 </resources>

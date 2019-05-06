@@ -1,10 +1,13 @@
 package com.example.emamediaplayer;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -24,8 +27,7 @@ public class SongsActivity extends ListActivity {
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
 
 
-        for (int i = 0; i < allSongs.length; i++)
-        {
+        for (int i = 0; i < allSongs.length; i++) {
             String trackFilename = musicDirectory + "/" + allSongs[i].getName();
 
             mmr.setDataSource(trackFilename);
@@ -38,6 +40,13 @@ public class SongsActivity extends ListActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, songArray);
         setListAdapter(adapter);
+
+    }
+
+    public void onListItemClick(ListView listView, View view, int index, long id) {
+
+        Intent intent = new Intent(this, MainActivity.class);
+
 
     }
 }
