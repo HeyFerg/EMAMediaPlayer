@@ -13,7 +13,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+
+
 public class SongsActivity extends ListActivity {
+
+    String [] fullFilename;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +28,7 @@ public class SongsActivity extends ListActivity {
         File[] allSongs = musicDirectory.listFiles();
         String[] songArray;
         songArray = new String[allSongs.length];
+
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
 
 
@@ -45,8 +50,11 @@ public class SongsActivity extends ListActivity {
 
     public void onListItemClick(ListView listView, View view, int index, long id) {
 
+        String selectedSong = (String) getListAdapter().getItem(index);
         Intent intent = new Intent(this, MainActivity.class);
-
-
+        Bundle bundle  = new Bundle();
+        bundle.putString("song", selectedSong);
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 }
