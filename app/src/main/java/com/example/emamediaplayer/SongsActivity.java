@@ -1,10 +1,12 @@
 package com.example.emamediaplayer;
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -17,8 +19,8 @@ import java.util.List;
 
 public class SongsActivity extends ListActivity {
 
-    String [] fullFilename;
-
+    static List<String> filePaths = new ArrayList<>();
+    static List<Integer> songDurations = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,11 +36,13 @@ public class SongsActivity extends ListActivity {
 
         for (int i = 0; i < allSongs.length; i++) {
             String trackFilename = musicDirectory + "/" + allSongs[i].getName();
+            filePaths.add(trackFilename);
 
             mmr.setDataSource(trackFilename);
 
             String songName = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_TITLE);
             String songArtist = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_ARTIST);
+            songDurations.add(Integer.parseInt(mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION)));
 
             songArray[i] = songName + " by " + songArtist;
         }
@@ -50,11 +54,18 @@ public class SongsActivity extends ListActivity {
 
     public void onListItemClick(ListView listView, View view, int index, long id) {
 
+        Log.d("My error", "I am here");
         String selectedSong = (String) getListAdapter().getItem(index);
-        Intent intent = new Intent(this, MainActivity.class);
+        String filePath = filePaths.get(index);
+        Integer duration = songDurations.get(index);
+        Intent intent = new Intent();
         Bundle bundle  = new Bundle();
         bundle.putString("song", selectedSong);
+        bundle.putString("path", filePath);
+        bundle.putInt("duration", duration);
         intent.putExtras(bundle);
-        startActivity(intent);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+
     }
 }
