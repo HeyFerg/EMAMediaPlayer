@@ -26,7 +26,7 @@ public class SongsActivity extends ListActivity {
         super.onCreate(savedInstanceState);
 
 
-        File musicDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Tracks");
+        File musicDirectory = new File(Environment.getExternalStorageDirectory().getAbsolutePath() + "/Music");
         File[] allSongs = musicDirectory.listFiles();
         String[] songArray;
         songArray = new String[allSongs.length];
@@ -53,8 +53,6 @@ public class SongsActivity extends ListActivity {
     }
 
     public void onListItemClick(ListView listView, View view, int index, long id) {
-
-        Log.d("My error", "I am here");
         String selectedSong = (String) getListAdapter().getItem(index);
         String filePath = filePaths.get(index);
         Integer duration = songDurations.get(index);
@@ -66,6 +64,6 @@ public class SongsActivity extends ListActivity {
         intent.putExtras(bundle);
         setResult(Activity.RESULT_OK, intent);
         finish();
-f
+
     }
 }

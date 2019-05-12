@@ -8,8 +8,8 @@
 
     <ImageButton
 
-        android:id="@+id/playBtn"
-        android:src="@drawable/play"
+        android:id="@+id/pauseBtn"
+        android:src="@drawable/pause"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,8 +18,8 @@
         android:layout_marginBottom="100dp"></ImageButton>
 
     <ImageButton
-        android:id="@+id/rewindBtn"
-        android:src="@drawable/rewind"
+        android:id="@+id/playBtn"
+        android:src="@drawable/play"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,8 +28,8 @@
         android:layout_marginLeft="75dp"/>
 
     <ImageButton
-        android:id="@+id/forwardBtn"
-        android:src="@drawable/forward"
+        android:id="@+id/stopBtn"
+        android:src="@drawable/stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,21 +41,11 @@
         android:id="@+id/currentArtist"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginBottom="132dp"
         app:layout_constraintBottom_toTopOf="@id/playBtn"
-        android:layout_marginBottom="250dp"
-        />
-
-    <TextView
-        android:id="@+id/currentSong"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/playBtn"
-        android:layout_marginBottom="195dp"
-        />
+        app:layout_constraintRight_toRightOf="parent" />
 
     <SeekBar
         android:id="@+id/songSeekbar"
@@ -68,13 +58,13 @@
         app:layout_constraintRight_toRightOf="parent" />
 
     <ImageView
+        android:id="@+id/albumArt"
         android:layout_width="200dp"
         android:layout_height="180dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/currentArtist"
         android:layout_marginBottom="50dp"
-        />
+        app:layout_constraintBottom_toTopOf="@id/currentArtist"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
 
 
